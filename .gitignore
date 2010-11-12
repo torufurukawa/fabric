@@ -8,4 +8,5 @@
 Fabric.egg-info
 .coverage
 docs/_build
+docs_jp/_build
 dist
