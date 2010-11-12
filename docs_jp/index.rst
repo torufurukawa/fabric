@@ -2,14 +2,23 @@
 Fabric
 ======
 
-Status
-======
+..
+  Status
+  ======
 
-This documentation is for Fabric's currently in-development version, which will
-eventually become Fabric 1.0. As such, it is subject to change and will not be
-set in stone until the beta release at the earliest. Additionally, the code and
-documentation may at times be out of sync, so please keep this in mind.
+状態
+====
 
+..
+  This documentation is for Fabric's currently in-development version, which will
+  eventually become Fabric 1.0. As such, it is subject to change and will not be
+  set in stone until the beta release at the earliest. Additionally, the code and
+  documentation may at times be out of sync, so please keep this in mind.
+
+この文書は Fabric 1.0 用に執筆途中です。そのため、早くともベータ版が出
+るまでは記述されている内容に、まだ変更があり、確定していない事項が含ま
+れます。また、コードも実際の Fabric の仕様を反映していないことがあるの
+で、ご注意ください。
 
 About
 =====
