@@ -20,10 +20,14 @@ Fabric
 れます。また、コードも実際の Fabric の仕様を反映していないことがあるの
 で、ご注意ください。
 
-About
-=====
+..
+  About
+  =====
 
-.. include:: ../README
+概要
+====
+
+.. include:: ../README_jp
 
 
 Installation

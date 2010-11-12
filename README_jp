@@ -1,0 +1,48 @@
+..
+  Fabric is a Python library and command-line tool for streamlining the use of
+  SSH for application deployment or systems administration tasks.
+
+Fabric は、SSH を使用してアプリケーションのデプロイ作業やシステム管理作業を能率化するための、Python ライブラリとコマンドラインツールです。
+
+..
+  It provides a basic suite of operations for executing local or remote shell
+  commands (normally or via ``sudo``) and uploading/downloading files, as well as
+  auxiliary functionality such as prompting the running user for input, or
+  aborting execution.
+
+Fabric は ローカルとリモートのシェル操作（通常ユーザまたは sudo 経由）、ファイルのアップロード/ダウンロード、ユーザからの入力や実行中断を受け付けるユーティリティなどをまとめたものです。
+
+.. 
+  Typical use involves creating a Python module containing one or more functions,
+  then executing them via the ``fab`` command-line tool. Below is a small but
+  complete "fabfile" containing a single task::
+
+典型的な使い方は、ひとつ、またはいくつかの関数を定義した Python モジュールを、コマンドラインツール ``fab`` から実行するというものです。以下の例は、短いですが、完全に動作するタスクを含む "fabfile" です::
+
+    from fabric.api import run
+
+    def host_type():
+        run('uname -s')
+
+..
+  Once a task is defined, it may be run on one or more servers, like so::
+
+タスクを定義したら、任意のサーバで実行できます::
+
+    $ fab -H localhost,linuxbox host_type
+    [localhost] run: uname -s
+    [localhost] out: Darwin
+    [linuxbox] run: uname -s
+    [linuxbox] out: Linux
+
+    Done.
+    Disconnecting from localhost... done.
+    Disconnecting from linuxbox... done.
+
+..
+  In addition to use via the ``fab`` tool, Fabric's components may be imported
+  into other Python code, providing a Pythonic interface to the SSH protocol
+  suite at a higher level than that provided by e.g. Paramiko (which
+  Fabric itself leverages.)
+
+``fab`` ツール経由での実行だけでなく、Fabric のコンポーネントは、他の Python コードにインポートして、Paramiko のような SSH プロトコルのモジュールの、より上位のインタフェースを提供するような使い方もできます（Fabric は Paramiko を使っています）。
