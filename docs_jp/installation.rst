@@ -1,6 +1,11 @@
-============
-Installation
-============
+..
+  ============
+  Installation
+  ============
+
+==============
+ インストール
+==============
 
 Fabric is best installed via `pip <http://pip.openplans.org>`_ (highly
 recommended) or `easy_install
@@ -11,8 +16,12 @@ package is typically called ``fabric`` or ``python-fabric``), or execute
 :ref:`cloned <source-code-checkouts>` copy of the source code.
 
 
-Dependencies
-============
+..
+  Dependencies
+  ============
+
+依存関係
+========
 
 In order for Fabric's installation to succeed, you will need four primary pieces of software:
 
@@ -63,8 +72,12 @@ extension.
 
 .. _pycrypto-and-pip:
 
-Package tools
-~~~~~~~~~~~~~
+..
+  Package tools
+  ~~~~~~~~~~~~~
+
+パッケージツール
+~~~~~~~~~~~~~~~~
 
 Current best practices in the Python packaging world involve using the ``pip``
 tool, which in most cases offers significant advantages over the older but more
@@ -80,8 +93,12 @@ settings are currently set to require PyCrypto 2.0.1 if you're on Python 2.5.x.
 However, Fabric will work fine with PyCrypto 2.1 and up -- you'll just need to
 upgrade it, via ``easy_install``, after installing Fabric itself.
 
-C extension
-~~~~~~~~~~~
+..
+  C extension
+  ~~~~~~~~~~~
+
+C 拡張
+~~~~~~
 
 Unless you are installing from a precompiled source such as a Debian apt
 repository or RedHat RPM, or using :ref:`pypm <pypm>`, you will also need the
@@ -103,8 +120,12 @@ precompiled Win32 PyCrypto package from `voidspace's Python modules page
     In this scenario, you'll probably need to compile ``winrandom`` yourself
     via e.g. MS Visual Studio.  See :issue:`194` for info.
 
-Development dependencies
-------------------------
+..
+  Development dependencies
+  ------------------------
+
+開発における依存関係
+--------------------
 
 If you are interested in doing development work on Fabric (or even just running
 the test suite), you may also need to install some or all of the following
@@ -128,8 +149,12 @@ install -r requirements.txt``.
 
 .. _downloads:
 
-Downloads
-=========
+..
+  Downloads
+  =========
+
+ダウンロード
+============
 
 To obtain a tar.gz or zip archive of the Fabric source code, you may visit
 either of the following locations:
@@ -152,8 +177,12 @@ either of the following locations:
 
 .. _source-code-checkouts:
 
-Source code checkouts
-=====================
+..
+  Source code checkouts
+  =====================
+
+ソースコードのチェックアウト
+============================
 
 The Fabric developers manage the project's source code with the `Git
 <http://git-scm.com>`_ DVCS. To follow Fabric's development via Git instead of
@@ -183,8 +212,12 @@ branches may be of interest and how you can help out, please see the
 
 .. _pypm:
 
-ActivePython and PyPM
-=====================
+..
+  ActivePython and PyPM
+  =====================
+
+ActivePython と PyPM
+====================
 
 Windows users who already have ActiveState's `ActivePython
 <http://www.activestate.com/activepython>`_ distribution installed may find

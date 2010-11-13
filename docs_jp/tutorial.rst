@@ -1,6 +1,11 @@
-=====================
-Overview and Tutorial
-=====================
+..
+  =====================
+  Overview and Tutorial
+  =====================
+
+======================
+ 概要とチュートリアル
+======================
 
 Welcome to Fabric!
 
@@ -9,8 +14,12 @@ use. Additional documentation (which is linked to throughout) can be found in
 the :ref:`usage documentation <usage-docs>` -- please make sure to check it out.
 
 
-What is Fabric?
-===============
+..
+  What is Fabric?
+  ===============
+
+Fabric とは？
+=============
 
 As the ``README`` says:
 
@@ -58,8 +67,12 @@ That's all there is to it. This functionality allows Fabric to be used as a
 .. seealso:: :ref:`execution-strategy`, :ref:`tasks-and-imports`, :doc:`usage/fab`
 
 
-Local commands
-==============
+..
+  Local commands
+  ==============
+
+ローカルコマンド
+================
 
 As used above, ``fab`` only really saves a couple lines of
 ``if __name__ == "__main__"`` boilerplate. It's mostly designed for use with
@@ -122,8 +135,12 @@ Fabric's API is similar -- it's all just Python.
 .. seealso:: :doc:`api/core/operations`, :ref:`fabfile-discovery`
 
 
-Organize it your way
-====================
+..
+  Organize it your way
+  ====================
+
+自分の好きなように書く
+======================
 
 Because Fabric is "just Python" you're free to organize your fabfile any way
 you want. For example, it's often useful to start splitting things up into
@@ -145,8 +162,12 @@ The ``prepare_deploy`` task can be called just as before, but now you can make
 a more granular call to one of the sub-tasks, if desired.
 
 
-Failure
-=======
+..
+  Failure
+  =======
+
+失敗
+====
 
 Our base case works fine now, but what happens if our tests fail?  Chances are
 we want to put on the brakes and fix them before deploying.
@@ -182,8 +203,12 @@ aborted, never running the ``pack`` task.
 
 .. seealso:: :ref:`Failure handling (usage documentation) <failures>`
 
-Failure handling
-----------------
+..
+  Failure handling
+  ----------------
+
+失敗時のハンドリング
+--------------------
 
 But what if we wanted to be flexible and give the user a choice? A setting
 (or **environment variable**, usually shortened to **env var**) called
@@ -223,7 +248,11 @@ and is now much more flexible.
 .. seealso:: :doc:`api/core/context_managers`, :ref:`env-vars`
 
 
-Making connections
+..
+  Making connections
+  ==================
+
+コネクションの作成
 ==================
 
 Let's start wrapping up our fabfile by putting in the keystone: a ``deploy``
@@ -269,8 +298,12 @@ example, we just had to specify the hostname, ``my_server``.
 
 .. _defining-connections:
 
-Defining connections beforehand
--------------------------------
+..
+  Defining connections beforehand
+  -------------------------------
+
+あらかじめコネクションを定義する
+--------------------------------
 
 Specifying connection info at runtime gets old real fast, so Fabric provides a
 handful of ways to do it in your fabfile or on the command line. We won't cover
@@ -302,8 +335,12 @@ task once for each connection.
 .. seealso:: :doc:`usage/env`, :ref:`host-lists`
 
 
-Conclusion
-==========
+..
+  Conclusion
+  ==========
+
+おわりに
+========
 
 Our completed fabfile is still pretty short, as such things go. Here it is in
 its entirety::

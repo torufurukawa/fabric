@@ -1,6 +1,11 @@
-===========
-Development
-===========
+..
+  ===========
+  Development
+  ===========
+
+======
+ 開発
+======
 
 The Fabric development team consists of two programmers, `Jeff Forcier
 <http://bitprophet.org>`_ and `Christian Vest Hansen
@@ -9,14 +14,22 @@ However, dozens of other developers pitch in by submitting patches and ideas,
 via individual emails, `Redmine <http://code.fabfile.org>`_, the `mailing list
 <http://lists.nongnu.org/mailman/listinfo/fab-user>`_ and `GitHub <http://github.com/bitprophet/fabric>`_.
 
-Get the code
+..
+  Get the code
+  ============
+
+コードの取得
 ============
 
 Please see the :ref:`source-code-checkouts` section of the :doc:`installation`
 page for details on how to obtain Fabric's source code.
 
-Contributing
-============
+..
+  Contributing
+  ============
+
+プロジェクトへの参加
+====================
 
 There are a number of ways to get involved with Fabric:
 
@@ -39,8 +52,12 @@ There are a number of ways to get involved with Fabric:
   inspect all contributions and either incorporate them or explain why we don't
   feel the change is a good fit.
 
-Communication
--------------
+..
+  Communication
+  -------------
+
+コミュニケーション
+------------------
 
 If a ticket-tracker ticket exists for a given issue, **please** keep all
 communication in that ticket's comments -- for example, when submitting patches
@@ -50,8 +67,12 @@ sending a Github pull request.
 The core devs receive emails for just about any ticket-tracker activity, so
 additional notices via Github or other means only serve to slow things down.
 
-Style
------
+..
+  Style
+  -----
+
+コード規約
+----------
 
 Fabric tries hard to honor `PEP-8`_, especially (but not limited to!) the
 following:
@@ -70,8 +91,12 @@ following:
 
 .. _PEP-8: http://www.python.org/dev/peps/pep-0008/
 
-Branching/Repository Layout
-===========================
+..
+  Branching/Repository Layout
+  ===========================
+
+ブランチ/リポジトリレイアウト
+=============================
 
 While Fabric's development methodology isn't set in stone yet, the following
 items detail how we currently organize the Git repository and expect to perform
@@ -116,7 +141,11 @@ contributors.
 
 .. _releases:
 
-Releases
+..
+  Releases
+  ========
+
+リリース
 ========
 
 Fabric tries to follow open-source standards and conventions in its release
@@ -124,8 +153,12 @@ tagging, including typical version numbers such as 2.0, 1.2.5, or
 1.2b1. Each release will be marked as a tag in the Git repositories, and
 are broken down as follows:
 
-Major
------
+..
+  Major
+  -----
+
+メジャー
+--------
 
 Major releases update the first number, e.g. going from 0.9 to 1.0, and
 indicate that the software has reached some very large milestone.
@@ -140,8 +173,12 @@ development, though this is not a requirement, just a usual happenstance.
 Users should expect to have to make at least some changes to their fabfiles
 when switching between major versions.
 
-Minor
------
+..
+  Minor
+  -----
+
+マイナー
+--------
 
 Minor releases, such as moving from 1.0 to 1.1, typically mean that a new,
 large feature has been added. They are also sometimes used to mark off the
@@ -163,8 +200,12 @@ with 1.0 should also work fine with 1.1 or even 1.9.
     hands, and so did break backwards compatibility. This will not happen
     again.
 
-Bugfix/tertiary
----------------
+..
+  Bugfix/tertiary
+  ---------------
+
+バグフィックス/3番目のバージョン番号
+------------------------------------
 
 The third and final part of version numbers, such as the '3' in 1.0.3,
 generally indicate a release containing one or more bugfixes, although minor
@@ -186,8 +227,12 @@ zero (e.g. 2.0.0).
     releases is expected to be shorter than that of 0.1 => 0.9.
 
 
-Support of older releases
-=========================
+..
+  Support of older releases
+  =========================
+
+過去のリリースのサポート
+========================
 
 Major and minor releases do not mark the end of the previous line or lines of
 development:
