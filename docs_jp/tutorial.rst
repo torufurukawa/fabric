@@ -7,11 +7,20 @@
  概要とチュートリアル
 ======================
 
-Welcome to Fabric!
+..
+  Welcome to Fabric!
 
-This document is a whirlwind tour of Fabric's features and a quick guide to its
-use. Additional documentation (which is linked to throughout) can be found in
-the :ref:`usage documentation <usage-docs>` -- please make sure to check it out.
+Fabric にようこそ！
+
+..
+  This document is a whirlwind tour of Fabric's features and a quick guide to its
+  use. Additional documentation (which is linked to throughout) can be found in
+  the :ref:`usage documentation <usage-docs>` -- please make sure to check it out.
+
+このドキュメントでは Fabric の機能を駆け足で巡る、使い方のクイックガイドに
+なっています。 :ref:`usage documentation <usage-docs>` では、追加の
+ドキュメント(くまなくリンクされています)を載せていますので、是非
+チェックして下さい。
 
 
 ..
@@ -21,48 +30,85 @@ the :ref:`usage documentation <usage-docs>` -- please make sure to check it out.
 Fabric とは？
 =============
 
-As the ``README`` says:
+..
+  As the ``README`` says:
 
-    .. include:: ../README
+``README`` で触れているように:
+
+    .. include:: ../README_jp
         :end-before: It provides
 
-More specifically, Fabric is:
+..
+  More specifically, Fabric is:
 
-* A tool that lets you execute **arbitrary Python functions** via the **command
-  line**;
-* A library of subroutines (built on top of a lower-level library) to make
-  executing shell commands over SSH **easy** and **Pythonic**.
+より具体的に言うと、Fabric は:
 
-Naturally, most users combine these two things, using Fabric to write and
-execute Python functions, or **tasks**, to automate interactions with remote
-servers. Let's take a look.
+..
+  * A tool that lets you execute **arbitrary Python functions** via the **command
+    line**;
+  * A library of subroutines (built on top of a lower-level library) to make
+    executing shell commands over SSH **easy** and **Pythonic**.
+
+* **コマンドライン** を介して **任意の Python 関数** を実行できるように
+  するツールです。
+* サブルーチンのライブラリ(低レベルライブラリの上に構成されています)は
+  **簡単** かつ **Pythonic** に SSH 経由でシェルコマンドを実行できるように
+  します。
+
+..
+  Naturally, most users combine these two things, using Fabric to write and
+  execute Python functions, or **tasks**, to automate interactions with remote
+  servers. Let's take a look.
+
+当然のことながら、ほんどのユーザーは Python の関数や **タスク** を記述、
+実行したり、リモートサーバとの交信を自動化するために、上記 2 つの機能を
+組み合わせて Fabric を使用しています。以下に見ていきましょう。
 
 
 Hello, ``fab``
 ==============
 
-This wouldn't be a proper tutorial without "the usual"::
+..
+  This wouldn't be a proper tutorial without "the usual"::
+
+"いつものやつ" が無いとチュートリアルになりませんよね::
 
     def hello():
         print("Hello world!")
 
-Placed in a Python module file named ``fabfile.py``, that function can be
-executed with the ``fab`` tool (installed as part of Fabric) and does just what
-you'd expect::
+..
+  Placed in a Python module file named ``fabfile.py``, that function can be
+  executed with the ``fab`` tool (installed as part of Fabric) and does just what
+  you'd expect::
+
+これを ``fabfile.py`` という Python モジュールファイルに保存すると、
+この関数を ``fab`` ツール(Fabric の一部としてインストールされます)から
+実行することができるようになり、期待した通りの結果が得られます::
 
     $ fab hello
     Hello world!
 
     Done.
 
-That's all there is to it. This functionality allows Fabric to be used as a
-(very) basic build tool even without importing any of its API.
+..
+  That's all there is to it. This functionality allows Fabric to be used as a
+  (very) basic build tool even without importing any of its API.
 
-.. note::
+これでおしまいです。この機能によって、API をインポートしないでも
+(非常に)基本的なビルドツールとして Fabric を使用することができます。
+
+..
+  .. note::
 
     The ``fab`` tool simply imports your fabfile and executes the function or
     functions you instruct it to. There's nothing magic about it -- anything
     you can do in a normal Python script can be done in a fabfile!
+
+.. note::
+
+   ``fab`` ツールは、単にあなたの fabfile をインポートして、その中で
+   定義した関数(群)を実行します。これはマジックでもなんでもありません --
+   通常の Python スクリプトでできることは、fabfile でもできるということです！
 
 .. seealso:: :ref:`execution-strategy`, :ref:`tasks-and-imports`, :doc:`usage/fab`
 
@@ -74,18 +120,28 @@ That's all there is to it. This functionality allows Fabric to be used as a
 ローカルコマンド
 ================
 
-As used above, ``fab`` only really saves a couple lines of
-``if __name__ == "__main__"`` boilerplate. It's mostly designed for use with
-Fabric's API, which contains functions (or **operations**) for executing shell
-commands, transferring files, and so forth.
+..
+  As used above, ``fab`` only really saves a couple lines of
+  ``if __name__ == "__main__"`` boilerplate. It's mostly designed for use with
+  Fabric's API, which contains functions (or **operations**) for executing shell
+  commands, transferring files, and so forth.
 
-Let's build a hypothetical Web application fabfile. Fabfiles usually work best
-at the root of a project::
+上で見たように ``fab`` では、お馴染の ``if __name__ == "__main__"`` の
+数行を、ただ単に保存しているだけです。このコマンドは主に、シェルコマンドの
+実行やファイル転送などの関数(や **操作**)を含む Fabric の API と
+合わせて使用するために設計されています。
+
+..
+  Let's build a hypothetical Web application fabfile. Fabfiles usually work best
+  at the root of a project::
+
+それでは仮想の Web アプリケーション用 fabfile をビルドしてみましょう。
+通常 fabfile は、プロジェクトのルートに配置することをお勧めします::
 
     .
     |-- __init__.py
     |-- app.wsgi
-    |-- fabfile.py <-- our fabfile!
+    |-- fabfile.py <-- この fabfile です！
     |-- manage.py
     `-- my_app
         |-- __init__.py
@@ -96,13 +152,24 @@ at the root of a project::
         |-- urls.py
         `-- views.py
 
+..
+  .. note::
+
+      We're using a Django application here, but only as an example -- Fabric is
+      not tied to any external codebase, save for its SSH library.
+
 .. note::
 
-    We're using a Django application here, but only as an example -- Fabric is
-    not tied to any external codebase, save for its SSH library.
+    ここでは Django アプリケーションを使っていますが、これはただの
+    例でしかありません -- Fabric は自身の SSH ライブラリ以外には、
+    どんな外部のコードベースにも依存していません。
 
-For starters, perhaps we want to run our tests and then pack up a copy of our
-app so we're ready for a deploy::
+..
+  For starters, perhaps we want to run our tests and then pack up a copy of our
+  app so we're ready for a deploy::
+
+手始めに、テストを実行してアプリケーションのコピーをまとめれば、
+デプロイの準備が整うと思います::
 
     from fabric.api import local
 
@@ -110,7 +177,10 @@ app so we're ready for a deploy::
         local('./manage.py test my_app', capture=False)
         local('tar czf /tmp/my_project.tgz .', capture=False)
 
-The output of which might look a bit like this::
+..
+  The output of which might look a bit like this::
+
+この処理の出力は、だいたい次のようになると思います::
 
     $ fab prepare_deploy
     [localhost] run: ./manage.py test my_app
@@ -128,9 +198,15 @@ The output of which might look a bit like this::
 
     Done.
 
-The code itself is straightforward: import a Fabric API function,
-`~fabric.operations.local`, and use it to run local shell commands. The rest of
-Fabric's API is similar -- it's all just Python.
+..
+  The code itself is straightforward: import a Fabric API function,
+  `~fabric.operations.local`, and use it to run local shell commands. The rest of
+  Fabric's API is similar -- it's all just Python.
+
+このコード自体はわかりやすいものでしょう: Fabric API 関数
+`~fabric.operations.local` をインポートして、これを用いてローカルの
+シェルコマンドを実行します。他の Fabric API も同様で -- 全てただの
+Python コードです。
 
 .. seealso:: :doc:`api/core/operations`, :ref:`fabfile-discovery`
 
@@ -142,9 +218,13 @@ Fabric's API is similar -- it's all just Python.
 自分の好きなように書く
 ======================
 
-Because Fabric is "just Python" you're free to organize your fabfile any way
-you want. For example, it's often useful to start splitting things up into
-subtasks::
+..
+  Because Fabric is "just Python" you're free to organize your fabfile any way
+  you want. For example, it's often useful to start splitting things up into
+  subtasks::
+
+Fabric は "ただの Python" なので、自分の好きなように fabfile を書くことができます。
+例えば、ひとつのタスクを複数のサブタスクに分割すると便利です::
 
     from fabric.api import local
 
@@ -158,9 +238,12 @@ subtasks::
         test()
         pack()
 
-The ``prepare_deploy`` task can be called just as before, but now you can make
-a more granular call to one of the sub-tasks, if desired.
+..
+  The ``prepare_deploy`` task can be called just as before, but now you can make
+  a more granular call to one of the sub-tasks, if desired.
 
+``prepare_deploy`` は以前と同じように呼び出すことができますが、今では、
+必要な場合には、サブタスクのひとつを実行させることもできます。
 
 ..
   Failure
@@ -169,8 +252,13 @@ a more granular call to one of the sub-tasks, if desired.
 失敗
 ====
 
-Our base case works fine now, but what happens if our tests fail?  Chances are
-we want to put on the brakes and fix them before deploying.
+..
+  Our base case works fine now, but what happens if our tests fail?  Chances are
+  we want to put on the brakes and fix them before deploying.
+
+基本的なケースはうまく動作しましたが、テストが失敗した場合には何が
+起こるのでしょうか？おそらく、その時点でストップして、デプロイ前に
+修正したいでしょう。
 
 Fabric checks the return value of programs called via operations and will abort
 if they didn't exit cleanly. Let's see what happens if one of our tests
