@@ -257,12 +257,17 @@ Fabric は "ただの Python" なので、自分の好きなように fabfile �
   we want to put on the brakes and fix them before deploying.
 
 基本的なケースはうまく動作しましたが、テストが失敗した場合には何が
-起こるのでしょうか？おそらく、その時点でストップして、デプロイ前に
-修正したいでしょう。
+起こるのでしょうか？おそらく、その時点で処理を止めて、デプロイ前に
+失敗した箇所を修正したいと思うでしょう。
 
-Fabric checks the return value of programs called via operations and will abort
-if they didn't exit cleanly. Let's see what happens if one of our tests
-encounters an error::
+..
+  Fabric checks the return value of programs called via operations and will abort
+  if they didn't exit cleanly. Let's see what happens if one of our tests
+  encounters an error::
+
+Fabric は操作によって呼ばれたプログラムの返り値をチェックして、
+正常に終了しなかった場合は処理を終了します。
+テストのひとつがエラーだった場合に何が起こるか見てみましょう::
 
     $ fab prepare_deploy
     [localhost] run: ./manage.py test my_app
@@ -286,8 +291,12 @@ encounters an error::
 
     Aborting.
 
-Great! We didn't have to do anything ourselves: Fabric detected the failure and
-aborted, never running the ``pack`` task.
+..
+  Great! We didn't have to do anything ourselves: Fabric detected the failure and
+  aborted, never running the ``pack`` task.
+
+素晴しい！自分達は何もする必要がありませんでした:
+Fabric が失敗を検知して処理を中断するので ``pack`` タスクは実行されません。
 
 .. seealso:: :ref:`Failure handling (usage documentation) <failures>`
 
@@ -298,13 +307,22 @@ aborted, never running the ``pack`` task.
 失敗時のハンドリング
 --------------------
 
-But what if we wanted to be flexible and give the user a choice? A setting
-(or **environment variable**, usually shortened to **env var**) called
-:ref:`warn_only` lets you turn aborts into warnings, allowing flexible error
-handling to occur.
+..
+  But what if we wanted to be flexible and give the user a choice? A setting
+  (or **environment variable**, usually shortened to **env var**) called
+  :ref:`warn_only` lets you turn aborts into warnings, allowing flexible error
+  handling to occur.
 
-Let's flip this setting on for our ``test`` function, and then inspect the
-result of the `~fabric.operations.local` call ourselves::
+しかし、より柔軟にして、ユーザーに選択をさせたい場合はどうするのでしょうか？
+:ref:`warn_only` という設定(もしくは **環境変数**)で、処理の中断を
+警告表示にさせ、柔軟なエラーハンドリングができるようになります。
+
+..
+  Let's flip this setting on for our ``test`` function, and then inspect the
+  result of the `~fabric.operations.local` call ourselves::
+
+それでは ``test`` 関数でこの設定を有効にして、
+`~fabric.operations.local` 呼び出しの結果を検査してみましょう::
 
     from __future__ import with_statement
     from fabric.api import local, settings, abort
@@ -318,20 +336,34 @@ result of the `~fabric.operations.local` call ourselves::
 
     [...]
 
-In adding this new feature we've introduced a number of new things:
+..
+  In adding this new feature we've introduced a number of new things:
 
-* The ``__future__`` import required to use ``with:`` in Python 2.5;
-* Fabric's `contrib.console <fabric.contrib.console>` submodule, containing the
-  `~fabric.contrib.console.confirm` function, used for simple yes/no prompts;
-* The `~fabric.context_managers.settings` context manager, used to apply
-  settings to a specific block of code;
-* Command-running operations like `~fabric.operations.local` return objects
-  containing info about their result (such as ``.failed``, or also
-  ``.return_code``);
-* And the `~fabric.utils.abort` function, used to manually abort execution.
+新機能の追加にあたって、新しい事柄をいくつかご紹介します。
 
-However, despite the additional complexity, it's still pretty easy to follow,
-and is now much more flexible.
+..
+  * The ``__future__`` import required to use ``with:`` in Python 2.5;
+  * Fabric's `contrib.console <fabric.contrib.console>` submodule, containing the
+    `~fabric.contrib.console.confirm` function, used for simple yes/no prompts;
+  * The `~fabric.context_managers.settings` context manager, used to apply
+    settings to a specific block of code;
+  * Command-running operations like `~fabric.operations.local` return objects
+    containing info about their result (such as ``.failed``, or also
+    ``.return_code``);
+  * And the `~fabric.utils.abort` function, used to manually abort execution.
+
+* Python 2.5 において ``with：`` を使うには ``__future__`` をインポートする必要があります。
+* `~fabric.contrib.console.confirm` 関数を含む Fabric の `contrib.console <fabric.contrib.console>` サブモジュールは、シンプルな yes/no プロンプト処理に使用されます。
+* `~fabric.context_managers.settings` コンテクストマネージャは、特定のコードブロックへの設定反映に使用されます。
+* `~fabric.operations.local` のようなコマンド実行処理は、(``.failed`` や ``.return_code`` のような)実行結果情報を持ったオブジェクトを返します。
+* `~fabric.utils.abort` 関数は、手動での中断処理実行に使用されます。
+
+..
+  However, despite the additional complexity, it's still pretty easy to follow,
+  and is now much more flexible.
+
+しかしながら、追加した機能の複雑さにもかかわらず、その処理を辿るのは
+まだ非常に簡単で、現在では、はるかに柔軟性に富んでいます。
 
 .. seealso:: :doc:`api/core/context_managers`, :ref:`env-vars`
 
